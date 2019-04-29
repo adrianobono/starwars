@@ -1,0 +1,87 @@
+<div *ngIf="showdica" class="trick">
+  <div class="trickb">
+    <div>
+      <input class="exitdet" (click)="showdica=false" type="image" src="../../assets/imgs/exit.jpg" alt="Submit">
+    </div>
+    <div>
+      <br>
+      <div class="txtdetail">
+        <div>Details</div>
+      </div>
+      <img class="imgdet" height="150" src="{{picture}}" alt="">
+      <div class="details">
+        - First Letter: {{firstchar}}
+        <br>
+        - Mass: {{mass}}
+        <br>
+        - Height: {{pheight}}
+        <br>
+        - Hair: {{hair}}
+        <br>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="showpontos" class="trick">
+    <div class="trickb">
+      <div>
+        <input class="exitdet" routerLink="/load" type="image" src="../../assets/imgs/exit.jpg" alt="Submit">
+      </div>
+      <div>
+        <br>
+        <div class="txtdetail">
+          <div>Quiz Finalizado!</div>
+        </div>
+        
+        <div class="txtdetail2">
+            <div>{{pontos + ' '}} pontos</div>
+        </div>
+          
+
+        <div class="details">
+          - Preencha o Form abaixo para salvar sua pontuação:
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+
+<div class="game">
+  <div class="menu">
+    <img class="logogame" src="../../assets/imgs/starquiz.jpg" height="60px" alt="">
+    <p class="timer">Timer: {{minutos+" :"}} <span *ngIf="segundos < 10"> 0 </span> {{segundos}}</p>
+  </div>
+
+
+  <div class="grid-container">
+
+    <div class="content-list" *ngFor="let char of showCards; let i = index">
+      <div *ngIf="status[pagination[i]] == 2;" style=" font-family: verdana; line-height: 250px; margin: auto; font-weight: bold; background-color: #3d3a73; vertical-align: middle; width: 100%; height: 100%;">
+        Acertou com a dica... </div>
+      <div *ngIf="status[pagination[i]] == 1;" style=" font-family: verdana; line-height: 250px; margin: auto; font-weight: bold; background-color: #9893f1; vertical-align: middle; width: 100%; height: 100%;">
+        Você acertou... </div>
+      <div *ngIf="status[pagination[i]] == 0;" style=" font-family: verdana; line-height: 250px; margin: auto; font-weight: bold; background-color: rgb(255, 72, 0);  width:100%; height: 100%;">
+        Ops... </div>
+      <div *ngIf="status[pagination[i]] == undefined">
+        <img class="imgchar" height="150" src="../assets/imgs/{{pagination[i]}}.jpg" alt="">
+        <div style="display:flex; align-items: center; margin-left: 30px;">
+          <img class="imgchar" height="27px" src="../../assets/imgs/write.jpg" alt="">
+          <input id="nome" (keyup.enter)="checkName(i, $event.target.value)" placeholder="Digite e pressione Enter"
+            style="height:25px" type="text">
+        </div>
+        <br>
+        <input style="padding:3px" (click)="setvalues[pagination[i]]=5; details(i)" type="image" src="../../assets/imgs/help.jpg"
+          alt="Submit">
+      </div>
+    </div>
+  </div>
+
+  <div style=" margin: auto; width: 50%">
+    <input class="next" *ngIf="page!=9" (click)="setplus()" type="image" src="../../assets/imgs/next.jpg" alt="Submit">
+    <input class="prev" *ngIf="page!=0" (click)="setMin()" type="image" src="../../assets/imgs/prev.jpg" alt="Submit">
+  </div>
+</div>

@@ -1,0 +1,16 @@
+
+<div *ngIf="customersObservable | async as customers else empty">
+    <div class="content-list" *ngFor="let customer of customers; let i = index"  >
+      <span class="user-name">
+       {{customer.name}}
+      </span>
+    </div>
+    </div>
+
+<router-outlet>
+
+  
+</router-outlet>
+
+
+

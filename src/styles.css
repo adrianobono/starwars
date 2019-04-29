@@ -1,0 +1,14 @@
+html,body{
+    height:100%;
+    background-color: black;
+   }
+
+
+body {
+    background-image: url('/assets/imgs/stars.jpg') ;
+    background-repeat: repeat;
+    padding-top: 60px;
+    
+}
+
+
